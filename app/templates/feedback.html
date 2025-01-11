@@ -1,20 +1,158 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/feedback.css') }}">
+</head>
 {% extends "base.html" %}
 
-{% block title %}Visualisation des Résultats{% endblock %}
+{% block title %}Feedback & Réclamations{% endblock %}
 
 {% block content %}
 
-<head>
-    <!-- Add FontAwesome CDN -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-</head>
+<div class="feedback-container">
+    <!-- Section Ajout -->
+    <section class="add-feedback-section">
+        <h2 class="section-title">Ajouter un Feedback ou une Réclamation</h2>
+        <form class="feedback-form" id="feedbackForm">
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select id="type" name="type" required>
+                    <option value="">Sélectionnez le type</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="reclamation">Réclamation</option>
+                </select>
+            </div>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/visualization.css') }}">
+            <div class="form-group">
+                <label for="client">Client</label>
+                <input type="text" id="client" name="client" required placeholder="Nom du client">
+            </div>
 
-{% endblock %}
+            <div class="form-group">
+                <label for="chauffeur">Chauffeur concerné</label>
+                <input type="text" id="chauffeur" name="chauffeur" required placeholder="Nom du chauffeur">
+            </div>
 
-{% block scripts %}
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ url_for('static', filename='js/visualization.js') }}"></script>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sujet">Sujet</label>
+                <input type="text" id="sujet" name="sujet" required placeholder="Sujet de votre message">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Votre message détaillé"></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i> Envoyer
+                </button>
+                <button type="reset" class="btn-reset">
+                    <i class="fas fa-undo"></i> Réinitialiser
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Section Listes -->
+    <section class="feedback-lists">
+        <!-- Liste des Feedbacks -->
+        <div class="list-section">
+            <h2 class="section-title">Liste des Feedbacks</h2>
+            <div class="feedback-cards">
+                <!-- Feedback 1 -->
+                <div class="feedback-card positive">
+                    <div class="card-header">
+                        <h3>Excellent service</h3>
+                        <span class="date">10/01/2025</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="client"><i class="fas fa-user"></i> Marie Dupont</p>
+                        <p class="chauffeur"><i class="fas fa-car"></i> Thomas Dubois</p>
+                        <p class="message">Service très professionnel, chauffeur ponctuel et courtois.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Feedback 2 -->
+                <div class="feedback-card neutral">
+                    <div class="card-header">
+                        <h3>Service correct</h3>
+                        <span class="date">09/01/2025</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="client"><i class="fas fa-user"></i> Jean Martin</p>
+                        <p class="chauffeur"><i class="fas fa-car"></i> Lucas Martin</p>
+                        <p class="message">Service satisfaisant dans l'ensemble.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liste des Réclamations -->
+        <div class="list-section">
+            <h2 class="section-title">Liste des Réclamations</h2>
+            <div class="feedback-cards">
+                <!-- Réclamation 1 -->
+                <div class="feedback-card negative">
+                    <div class="card-header">
+                        <h3>Retard important</h3>
+                        <span class="date">08/01/2025</span>
+                        <span class="status pending">En attente</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="client"><i class="fas fa-user"></i> Sophie Bernard</p>
+                        <p class="chauffeur"><i class="fas fa-car"></i> Marie Laurent</p>
+                        <p class="message">Retard de 30 minutes sans prévenir.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-action">
+                            <i class="fas fa-reply"></i> Répondre
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Réclamation 2 -->
+                <div class="feedback-card negative">
+                    <div class="card-header">
+                        <h3>Problème de facturation</h3>
+                        <span class="date">07/01/2025</span>
+                        <span class="status resolved">Résolu</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="client"><i class="fas fa-user"></i> Pierre Dubois</p>
+                        <p class="chauffeur"><i class="fas fa-car"></i> Lucas Martin</p>
+                        <p class="message">Double facturation pour une course unique.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-action resolved">
+                            <i class="fas fa-check"></i> Résolu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock %}

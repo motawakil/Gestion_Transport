@@ -1,20 +1,102 @@
 {% extends "base.html" %}
 
-{% block title %}Visualisation des Résultats{% endblock %}
+{% block title %}Gestion des Chauffeurs{% endblock %}
 
 {% block content %}
-
 <head>
-    <!-- Add FontAwesome CDN -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransportManager - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chauffeur.css') }}">
+
 </head>
+<div class="chauffeur-container">
+    <h1 class="page-title">Liste des Chauffeurs</h1>
+    
+    <div class="search-bar">
+        <input type="text" placeholder="Rechercher un chauffeur...">
+        <i class="fas fa-search"></i>
+    </div>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/visualization.css') }}">
+    <div class="drivers-grid">
+        <!-- Chauffeur 1 -->
+        <div class="driver-card">
+            <div class="driver-header">
+                <div class="driver-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="status-badge available">
+                    <i class="fas fa-circle"></i> Disponible
+                </div>
+            </div>
+            <div class="driver-info">
+                <h3>Thomas Dubois</h3>
+                <p><i class="fas fa-id-card"></i> ID: CH001</p>
+                <p><i class="fas fa-phone"></i> +33 6 12 34 56 78</p>
+                <p><i class="fas fa-envelope"></i> t.dubois@exemple.com</p>
+                <p><i class="fas fa-car"></i> Peugeot 508</p>
+                <p><i class="fas fa-star"></i> 4.8/5 (156 courses)</p>
+            </div>
+            <div class="driver-actions">
+                <button class="btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+                <button class="btn-secondary"><i class="fas fa-history"></i> Historique</button>
+            </div>
+        </div>
 
+        <!-- Chauffeur 2 -->
+        <div class="driver-card">
+            <div class="driver-header">
+                <div class="driver-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="status-badge busy">
+                    <i class="fas fa-circle"></i> En course
+                </div>
+            </div>
+            <div class="driver-info">
+                <h3>Marie Laurent</h3>
+                <p><i class="fas fa-id-card"></i> ID: CH002</p>
+                <p><i class="fas fa-phone"></i> +33 6 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> m.laurent@exemple.com</p>
+                <p><i class="fas fa-car"></i> Renault Captur</p>
+                <p><i class="fas fa-star"></i> 4.9/5 (203 courses)</p>
+            </div>
+            <div class="driver-actions">
+                <button class="btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+                <button class="btn-secondary"><i class="fas fa-history"></i> Historique</button>
+            </div>
+        </div>
+
+        <!-- Chauffeur 3 -->
+        <div class="driver-card">
+            <div class="driver-header">
+                <div class="driver-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="status-badge break">
+                    <i class="fas fa-circle"></i> En pause
+                </div>
+            </div>
+            <div class="driver-info">
+                <h3>Lucas Martin</h3>
+                <p><i class="fas fa-id-card"></i> ID: CH003</p>
+                <p><i class="fas fa-phone"></i> +33 6 34 56 78 90</p>
+                <p><i class="fas fa-envelope"></i> l.martin@exemple.com</p>
+                <p><i class="fas fa-car"></i> Citroën C5</p>
+                <p><i class="fas fa-star"></i> 4.7/5 (178 courses)</p>
+            </div>
+            <div class="driver-actions">
+                <button class="btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+                <button class="btn-secondary"><i class="fas fa-history"></i> Historique</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
-<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ url_for('static', filename='js/visualization.js') }}"></script>
+<script src="{{ url_for('static', filename='js/chauffeur.js') }}"></script>
 {% endblock %}
