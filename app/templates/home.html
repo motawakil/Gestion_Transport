@@ -1,68 +1,78 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <title>Dashboard | TransportManager</title>
+   
+</head>
+<body>
+    {% extends "base.html" %}
 
-{% block title %}Accueil - Analyse de Données ML{% endblock %}
+    {% block title %}Dashboard{% endblock %}
 
-{% block content %}
-
-
-<!-- Hero Section -->
-<div class="hero-section py-5 bg-light">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-8 mx-auto text-center">
-                <h1 class="display-4 mb-4">Application d'analyse de données avec Machine Learning</h1>
-                <p class="lead mb-4">Découvrez la puissance de l'analyse de données et du machine learning avec notre application intuitive.</p>
-                <div class="text-center mt-4">
-                    <a href="{{ url_for('main.import_data') }}" class="btn btn-primary btn-lg me-3">
-                        <i class="fas fa-upload me-2"></i>Commencer
-                    </a>
-                    <a href="{{ url_for('main.documentation') }}" class="btn btn-outline-primary btn-lg">
-                        <i class="fas fa-info-circle me-2"></i>En savoir plus
-                    </a>
-                </div>
+    {% block content %}
+    <div class="dashboard-container">
+        <!-- Profile Section -->
+        <div class="profile-card">
+            <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile" class="profile-image">
+            <div class="profile-info">
+                <h2> current_user.name </h2>
+                <p>current_user.role </p>
+                <p> current_user.email </p>
             </div>
+            <a class="edit-profile-btn" href="{{ url_for('main.account') }}">
+                <i class="fas fa-user-edit"></i> Modifier le profil
+            </a>
+                
+        
         </div>
+
+      
+<div class="stats-container">
+    <div class="stat-card">
+        <i class="fas fa-car stat-icon"></i>
+        <div class="stat-value">12</div>
+        <div class="stat-label">Véhicules disponibles</div>
+    </div>
+    <div class="stat-card">
+        <i class="fas fa-users stat-icon"></i>
+        <div class="stat-value">24</div>
+        <div class="stat-label">Conducteurs actifs</div>
+    </div>
+    <div class="stat-card">
+        <i class="fas fa-calendar-check stat-icon"></i>
+        <div class="stat-value">8</div>
+        <div class="stat-label">Réservations en attente</div>
+    </div>
+    <div class="stat-card">
+        <i class="fas fa-comments stat-icon"></i>
+        <div class="stat-value">15</div>
+        <div class="stat-label">Nouveaux retours</div>
     </div>
 </div>
-<link rel="stylesheet" href="css/home.css">
-<script src="js/home.js"></script>
-<!-- Features Section -->
-<div class="features-section py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center text-primary fw-bold mb-5">Caractéristiques Clés</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 shadow border-0">
-                    <img src="/static/images/import.png" class="card-img-top" alt="Importation des Données">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Importation des Données</h5>
-                        <p class="card-text">Importez facilement vos données depuis différentes sources pour commencer votre analyse.</p>
-                    </div>
-                </div>
+        <!-- Recent Activities Section -->
+        <div class="recent-activities">
+            <div class="activities-header">
+                <h3>Activités récentes</h3>
+                <a href="#" class="see-all-btn">Voir tout</a>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow border-0">
-                    <img src="/static/images/visualization.png" class="card-img-top" alt="Visualisation">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Visualisation</h5>
-                        <p class="card-text">Visualisez vos résultats avec des graphiques interactifs et des tableaux de bord.</p>
+            <ul class="activities-list">
+                {% for activity in recent_activities %}
+                <li class="activity-item">
+                    <div class="activity-icon">
+                        <i class="{{ activity.icon }}"></i>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow border-0">
-                    <img src="/static/images/analysis.png" class="card-img-top" alt="Analyse et Modèles">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Analyse et Modèles</h5>
-                        <p class="card-text">Utilisez des modèles de machine learning puissants pour analyser vos données.</p>
+                    <div class="activity-content">
+                        <h4 class="activity-title">{{ activity.title }}</h4>
+                        <p class="activity-time">{{ activity.timestamp }}</p>
                     </div>
-                </div>
-            </div>
-            
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
-</div>
 
-
-
-{% endblock %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Importation des Données{% endblock %}
+
+{% block content %}
+
+
+<!-- Add Font Awesome for icons -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/import.css') }}">
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- PapaParse Library for CSV Parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    
+    <!-- jsPDF library for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <!-- Your Custom JS File -->
+    <script src="{{ url_for('static', filename='js/import.js') }}"></script>
+
+{% endblock %}

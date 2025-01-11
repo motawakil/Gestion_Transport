@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Véhicules | TransportManager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vehicule.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="vehicles-container">
+         <!-- Progress Bar -->
+         <div class="progress-bar">
+            <div class="progress-step completed">
+                1
+                <span class="progress-label">Trajet</span>
+            </div>
+            <div class="progress-step active">
+                2
+                <span class="progress-label">Véhicule</span>
+            </div>
+            <div class="progress-step">
+                3
+                <span class="progress-label">Chauffeur</span>
+            </div>
+            <div class="progress-step">
+                4
+                <span class="progress-label">Confirmation</span>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+
+        <div class="filters-section">
+            <h2>Filtres</h2>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <select class="filter-select">
+                        <option value="">État du véhicule</option>
+                        <option value="available">Disponible</option>
+                        <option value="in-use">En service</option>
+                        <option value="maintenance">En maintenance</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-group">
+                    <select class="filter-select">
+                        <option value="">Type de véhicule</option>
+                        <option value="sedan">Berline</option>
+                        <option value="suv">SUV</option>
+                        <option value="van">Fourgonnette</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-group">
+                    <select class="filter-select">
+                        <option value="">Capacité</option>
+                        <option value="2-4">2-4 places</option>
+                        <option value="5-7">5-7 places</option>
+                        <option value="8+">8+ places</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-row">
+            <div class="stat-box">
+                <i class="fas fa-car stat-icon" style="color: #3498db;"></i>
+                <div class="stat-value">25</div>
+                <div class="stat-label">Total Véhicules</div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-check-circle stat-icon" style="color: #2ecc71;"></i>
+                <div class="stat-value">12</div>
+                <div class="stat-label">Disponibles</div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-road stat-icon" style="color: #f1c40f;"></i>
+                <div class="stat-value">8</div>
+                <div class="stat-label">En Service</div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-tools stat-icon" style="color: #e74c3c;"></i>
+                <div class="stat-value">5</div>
+                <div class="stat-label">En Maintenance</div>
+            </div>
+        </div>
+
+        <!-- Vehicles Grid -->
+        <div class="vehicles-grid">
+            <!-- Vehicle Card 1 -->
+            <div class="vehicle-card">
+                <img src="{{ url_for('static', filename='images/Peugot_3008.jpg') }}" alt="Vehicle" class="vehicle-image">
+                <div class="vehicle-details">
+                    <div class="vehicle-header">
+                        <h3 class="vehicle-name">Peugeot 3008</h3>
+                        <span class="vehicle-status status-available">Disponible</span>
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="info-item">
+                            <i class="fas fa-tag"></i>
+                            <span>SUV</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <span>5 places</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>Diesel</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-road"></i>
+                            <span>45,000 km</span>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn btn-edit">
+                            <i class="fas fa-edit"></i>
+                            Modifier
+                        </button>
+                        <button class="action-btn btn-details">
+                            <i class="fas fa-info-circle"></i>
+                            Détails
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicle Card 2 -->
+            <div class="vehicle-card">
+                <img src="{{ url_for('static', filename='images/Peugot_3008.jpg') }}" alt="Vehicle" class="vehicle-image">
+                <div class="vehicle-details">
+                    <div class="vehicle-header">
+                        <h3 class="vehicle-name">Renault Trafic</h3>
+                        <span class="vehicle-status status-in-use">En service</span>
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="info-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Fourgonnette</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <span>9 places</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>Diesel</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-road"></i>
+                            <span>32,000 km</span>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn btn-edit">
+                            <i class="fas fa-edit"></i>
+                            Modifier
+                        </button>
+                        <button class="action-btn btn-details">
+                            <i class="fas fa-info-circle"></i>
+                            Détails
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicle Card 3 -->
+            <div class="vehicle-card">
+                <img src="{{ url_for('static', filename='images/Peugot_3008.jpg') }}" alt="Vehicle" class="vehicle-image">
+                <div class="vehicle-details">
+                    <div class="vehicle-header">
+                        <h3 class="vehicle-name">Citroën C4</h3>
+                        <span class="vehicle-status status-maintenance">En maintenance</span>
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="info-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Berline</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <span>5 places</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>Essence</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-road"></i>
+                            <span>28,500 km</span>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn btn-edit">
+                            <i class="fas fa-edit"></i>
+                            Modifier
+                        </button>
+                        <button class="action-btn btn-details">
+                            <i class="fas fa-info-circle"></i>
+                            Détails
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-select').forEach(select => {
+            select.addEventListener('change', function() {
+                // Add filter logic here
+                console.log('Filter changed:', this.value);
+            });
+        });
+
+        // Animate stats on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.stat-value').forEach(stat => {
+                const finalValue = parseInt(stat.textContent);
+                let currentValue = 0;
+                const duration = 1000;
+                const steps = 20;
+                const increment = finalValue / steps;
+                const stepDuration = duration / steps;
+
+                const counter = setInterval(() => {
+                    currentValue += increment;
+                    if (currentValue >= finalValue) {
+                        stat.textContent = finalValue;
+                        clearInterval(counter);
+                    } else {
+                        stat.textContent = Math.floor(currentValue);
+                    }
+                }, stepDuration);
+            });
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>
