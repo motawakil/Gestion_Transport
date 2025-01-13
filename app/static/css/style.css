@@ -115,6 +115,102 @@ body {
     border-top: 1px solid #eee;
 }
 
+
+
+.top-bar {
+    background: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Notification Icon */
+.notification-icon, .messages-icon {
+    position: relative;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.notification-icon .notification-count, 
+.messages-icon .messages-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+}
+
+/* User Profile */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.user-name {
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background: var(--hover-color);
+    color: white;
+}
+
+/* Show dropdown on hover */
+.user-profile:hover .dropdown-menu {
+    display: block;
+}
+
+
+
+
+
 /* Animations */
 .menu-item {
     animation: slideIn 0.5s ease forwards;

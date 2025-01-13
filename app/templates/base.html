@@ -35,6 +35,9 @@
             <a href="{{ url_for('main.feedback') }}" class="menu-item">
                 <i class="fas fa-comments"></i> Feedbacks et Reclamations
             </a>
+            <a href="{{ url_for('main.admin') }}" class="menu-item">
+                <i class="fas fa-cogs"></i> Admin Space
+            </a>
             <a href="{{ url_for('main.account') }}" class="menu-item">
                 <i class="fas fa-cogs"></i> Account Settings
             </a>
@@ -46,11 +49,33 @@
 
     <div class="content-wrapper">
         <div class="top-bar">
+            <!-- Dashboard Title -->
             <h2>Dashboard</h2>
-            <button class="action-button">
-                <i class="fas fa-plus"></i> Nouvelle Réservation
-            </button>
+        
+            <!-- Icons and User Section -->
+            <div class="header-actions">
+                <!-- Notification Icon -->
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+        
+                <!-- Messages Icon -->
+                <div class="messages-icon">
+                    <i class="fas fa-envelope"></i>
+                    <span class="messages-count">5</span>
+                </div>
+        
+                <!-- User Profile Dropdown -->
+                <div class="user-profile">
+                    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="User Avatar" class="user-avatar">
+                    <span class="user-name">John Doe</span>
+                  
+                
+                </div>
+            </div>
         </div>
+        
 
         <main class="container">
             {% block content %}{% endblock %}

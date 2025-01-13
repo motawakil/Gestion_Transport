@@ -5,26 +5,25 @@
     <title>Nouvelle Réservation | TransportManager</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reservation.css') }}">
 </head>
-<body>
+<body data-page="reservation">
     {% extends "base.html" %}
-
     {% block content %}
     <div class="reservation-container">
         <!-- Progress Bar -->
         <div class="progress-bar">
-            <div class="progress-step completed">
+            <div class="progress-step" data-step="1">
                 1
                 <span class="progress-label">Trajet</span>
             </div>
-            <div class="progress-step active">
+            <div class="progress-step" data-step="2">
                 2
                 <span class="progress-label">Véhicule</span>
             </div>
-            <div class="progress-step">
+            <div class="progress-step" data-step="3">
                 3
                 <span class="progress-label">Chauffeur</span>
             </div>
-            <div class="progress-step">
+            <div class="progress-step" data-step="4">
                 4
                 <span class="progress-label">Confirmation</span>
             </div>
@@ -53,193 +52,49 @@
             </div>
         </div>
 
-        <!-- Step 2: Vehicle Selection -->
-        <div class="form-section" id="step2">
-            <h2>Sélection du Véhicule</h2>
-            <div class="selection-grid">
-                <div class="selection-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-car"></i>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Peugeot 3008</h3>
-                            <p class="card-subtitle">SUV - 5 places</p>
-                        </div>
-                    </div>
-                    <div class="card-details">
-                        <div class="info-item">
-                            <i class="fas fa-gas-pump"></i>
-                            <span>Diesel</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Disponible</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="selection-card selected">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-shuttle-van"></i>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Renault Trafic</h3>
-                            <p class="card-subtitle">Fourgonnette - 9 places</p>
-                        </div>
-                    </div>
-                    <div class="card-details">
-                        <div class="info-item">
-                            <i class="fas fa-gas-pump"></i>
-                            <span>Diesel</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Disponible</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 3: Driver Selection -->
-        <div class="form-section" id="step3">
-            <h2>Sélection du Chauffeur</h2>
-            <div class="selection-grid">
-                <div class="selection-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Jean Dupont</h3>
-                            <p class="card-subtitle">5 ans d'expérience</p>
-                        </div>
-                    </div>
-                    <div class="card-details">
-                        <div class="info-item">
-                            <i class="fas fa-star"></i>
-                            <span>4.8/5 évaluation</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Disponible</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="selection-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Marie Martin</h3>
-                            <p class="card-subtitle">3 ans d'expérience</p>
-                        </div>
-                    </div>
-                    <div class="card-details">
-                        <div class="info-item">
-                            <i class="fas fa-star"></i>
-                            <span>4.9/5 évaluation</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Disponible</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 4: Summary -->
-        <div class="form-section" id="step4">
-            <h2>Résumé de la Réservation</h2>
-            <ul class="summary-list">
-                <li class="summary-item">
-                    <span class="summary-label">Trajet</span>
-                    <span class="summary-value">Paris → Lyon</span>
-                </li>
-                <li class="summary-item">
-                    <span class="summary-label">Date de départ</span>
-                    <span class="summary-value">15 Jan 2025 - 09:00</span>
-                </li>
-                <li class="summary-item">
-                    <span class="summary-label">Date d'arrivée estimée</span>
-                    <span class="summary-value">15 Jan 2025 - 14:00</span>
-                </li>
-                <li class="summary-item">
-                    <span class="summary-label">Véhicule</span>
-                    <span class="summary-value">Renault Trafic</span>
-                </li>
-                <li class="summary-item">
-                    <span class="summary-label">Chauffeur</span>
-                    <span class="summary-value">Jean Dupont</span>
-                </li>
-            </ul>
-        </div>
-
         <!-- Navigation Buttons -->
         <div class="form-navigation">
-            <button class="nav-button btn-prev">
-                <i class="fas fa-arrow-left"></i>
-                Précédent
-            </button>
-            <button class="nav-button btn-next">
-                Suivant
-                <i class="fas fa-arrow-right"></i>
-            </button>
+            <button class="nav-button btn-prev" disabled>Précédent</button>
+            <button class="nav-button btn-next" onclick="navigateTo('vehicule')">Suivant</button>
         </div>
     </div>
 
     <script>
-        // Form navigation
-        const steps = document.querySelectorAll('.form-section');
-        const progressSteps = document.querySelectorAll('.progress-step');
-        let currentStep = 0;
+        document.addEventListener("DOMContentLoaded", function () {
+            const pageToStep = {
+                "reservation": 1,
+                "vehicule": 2,
+                "chauffeur": 3,
+                "confirmation": 4
+            };
 
-        function showStep(stepIndex) {
-            steps.forEach((step, index) => {
-                step.style.display = index === stepIndex ? 'block' : 'none';
-                if (index < stepIndex) {
-                    progressSteps[index].classList.add('completed');
-                } else if (index === stepIndex) {
-                    progressSteps[index].classList.add('active');
-                } else {
-                    progressSteps[index].classList.remove('active', 'completed');
-                }
-            });
-        }
+            const currentPage = document.body.dataset.page;
+            const progressSteps = document.querySelectorAll(".progress-step");
 
-        // Initialize first step
-        showStep(currentStep);
+            if (pageToStep[currentPage]) {
+                const currentStep = pageToStep[currentPage];
 
-        // Handle card selection
-        document.querySelectorAll('.selection-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const parent = this.parentElement;
-                parent.querySelectorAll('.selection-card').forEach(c => {
-                    c.classList.remove('selected');
+                progressSteps.forEach((step, index) => {
+                    const stepIndex = index + 1;
+
+                    if (stepIndex < currentStep) {
+                        step.classList.add("completed");
+                    } else if (stepIndex === currentStep) {
+                        step.classList.add("active");
+                    }
                 });
-                this.classList.add('selected');
-            });
-        });
-
-        // Navigation buttons
-        document.querySelector('.btn-next').addEventListener('click', () => {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                showStep(currentStep);
             }
         });
 
-        document.querySelector('.btn-prev').addEventListener('click', () => {
-            if (currentStep > 0) {
-                currentStep--;
-                showStep(currentStep);
-            }
-        });
+        function navigateTo(page) {
+            // Update the URL for redirection
+            const routes = {
+                "vehicule": "{{ url_for('main.vehicule') }}",
+                "chauffeur": "{{ url_for('main.chauffeur') }}",
+                "confirmation": "{{ url_for('main.vehicule') }}"
+            };
+            window.location.href = routes[page];
+        }
     </script>
     {% endblock %}
 </body>

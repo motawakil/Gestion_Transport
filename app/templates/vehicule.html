@@ -10,25 +10,26 @@
 
     {% block content %}
     <div class="vehicles-container">
-         <!-- Progress Bar -->
-         <div class="progress-bar">
-            <div class="progress-step completed">
-                1
-                <span class="progress-label">Trajet</span>
-            </div>
-            <div class="progress-step active">
-                2
-                <span class="progress-label">Véhicule</span>
-            </div>
-            <div class="progress-step">
-                3
-                <span class="progress-label">Chauffeur</span>
-            </div>
-            <div class="progress-step">
-                4
-                <span class="progress-label">Confirmation</span>
-            </div>
-        </div>
+       <!-- Progress Bar -->
+<div class="progress-bar">
+    <div class="progress-step" data-step="1">
+        1
+        <span class="progress-label">Trajet</span>
+    </div>
+    <div class="progress-step" data-step="2">
+        2
+        <span class="progress-label">Véhicule</span>
+    </div>
+    <div class="progress-step" data-step="3">
+        3
+        <span class="progress-label">Chauffeur</span>
+    </div>
+    <div class="progress-step" data-step="4">
+        4
+        <span class="progress-label">Confirmation</span>
+    </div>
+</div>
+
 
         <!-- Filters Section -->
 
@@ -208,38 +209,54 @@
                 </div>
             </div>
         </div>
+            <!-- Navigation Buttons -->
+            <div class="form-navigation">
+                <button class="nav-button btn-prev">
+                    <i class="fas fa-arrow-left"></i>
+                    Précédent
+                </button>
+                <button class="nav-button btn-next">
+                    Suivant
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
     </div>
-
     <script>
-        // Filter functionality
-        document.querySelectorAll('.filter-select').forEach(select => {
-            select.addEventListener('change', function() {
-                // Add filter logic here
-                console.log('Filter changed:', this.value);
-            });
-        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const pageToStep = {
+                "reservation": 1,
+                "vehicule": 2,
+                "chauffeur": 3,
+                "confirmation": 4
+            };
 
-        // Animate stats on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.stat-value').forEach(stat => {
-                const finalValue = parseInt(stat.textContent);
-                let currentValue = 0;
-                const duration = 1000;
-                const steps = 20;
-                const increment = finalValue / steps;
-                const stepDuration = duration / steps;
+            const currentPage = document.body.dataset.page;
+            const progressSteps = document.querySelectorAll(".progress-step");
 
-                const counter = setInterval(() => {
-                    currentValue += increment;
-                    if (currentValue >= finalValue) {
-                        stat.textContent = finalValue;
-                        clearInterval(counter);
-                    } else {
-                        stat.textContent = Math.floor(currentValue);
+            if (pageToStep[currentPage]) {
+                const currentStep = pageToStep[currentPage];
+
+                progressSteps.forEach((step, index) => {
+                    const stepIndex = index + 1;
+
+                    if (stepIndex < currentStep) {
+                        step.classList.add("completed");
+                    } else if (stepIndex === currentStep) {
+                        step.classList.add("active");
                     }
-                }, stepDuration);
-            });
+                });
+            }
         });
+
+        function navigateTo(page) {
+            // Update the URL for redirection
+            const routes = {
+                "vehicule": "{{ url_for('main.vehicule') }}",
+                "chauffeur": "{{ url_for('main.chauffeur') }}",
+                "confirmation": "{{ url_for('main.vehicule') }}"
+            };
+            window.location.href = routes[page];
+        }
     </script>
     {% endblock %}
 </body>

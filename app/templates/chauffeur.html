@@ -15,10 +15,27 @@
 <div class="chauffeur-container">
     <h1 class="page-title">Liste des Chauffeurs</h1>
     
-    <div class="search-bar">
-        <input type="text" placeholder="Rechercher un chauffeur...">
-        <i class="fas fa-search"></i>
+    <!-- Progress Bar -->
+<div class="progress-bar">
+    <div class="progress-step" data-step="1">
+        1
+        <span class="progress-label">Trajet</span>
     </div>
+    <div class="progress-step" data-step="2">
+        2
+        <span class="progress-label">Véhicule</span>
+    </div>
+    <div class="progress-step" data-step="3">
+        3
+        <span class="progress-label">Chauffeur</span>
+    </div>
+    <div class="progress-step" data-step="4">
+        4
+        <span class="progress-label">Confirmation</span>
+    </div>
+</div>
+
+
 
     <div class="drivers-grid">
         <!-- Chauffeur 1 -->
@@ -40,7 +57,7 @@
                 <p><i class="fas fa-star"></i> 4.8/5 (156 courses)</p>
             </div>
             <div class="driver-actions">
-                <button class="btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+                <button class="btn-primary"><i class="fas fa-edit"></i> Selectionner</button>
                 <button class="btn-secondary"><i class="fas fa-history"></i> Historique</button>
             </div>
         </div>
@@ -64,7 +81,7 @@
                 <p><i class="fas fa-star"></i> 4.9/5 (203 courses)</p>
             </div>
             <div class="driver-actions">
-                <button class="btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+                <button class="btn-primary"><i class="fas fa-edit"></i> Selectionner</button>
                 <button class="btn-secondary"><i class="fas fa-history"></i> Historique</button>
             </div>
         </div>
@@ -88,11 +105,22 @@
                 <p><i class="fas fa-star"></i> 4.7/5 (178 courses)</p>
             </div>
             <div class="driver-actions">
-                <button class="btn-primary"><i class="fas fa-edit"></i> Modifier</button>
+                <button class="btn-primary"><i class="fas fa-edit"></i> Selectionner</button>
                 <button class="btn-secondary"><i class="fas fa-history"></i> Historique</button>
             </div>
         </div>
     </div>
+        <!-- Navigation Buttons -->
+        <div class="form-navigation">
+            <button class="nav-button btn-prev">
+                <i class="fas fa-arrow-left"></i>
+                Précédent
+            </button>
+            <button class="nav-button btn-next">
+                Suivant
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
 </div>
 {% endblock %}
 

@@ -3,8 +3,7 @@
             padding: 20px;
         }
 
-        
-/* Progress Bar */
+     /* Progress Bar */
 .progress-bar {
     display: flex;
     justify-content: space-between;
@@ -41,9 +40,9 @@
 }
 
 .progress-step.active {
+    background: linear-gradient(to right, #3498db 50%, white 50%);
     border-color: #3498db;
     color: #3498db;
-    background: #fff;
 }
 
 .progress-step.completed {
@@ -59,6 +58,7 @@
     font-size: 12px;
     color: #666;
 }
+
 
 
         /* Filters Section */
@@ -257,3 +257,42 @@
             background: #eeeeee;
         }
  
+        
+
+
+/* Navigation Buttons */
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.nav-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-prev {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.btn-prev:hover {
+    background: #e0e0e0;
+}
+
+.btn-next {
+    background: #3498db;
+    color: white;
+}
+
+.btn-next:hover {
+    background: #2980b9;
+}        

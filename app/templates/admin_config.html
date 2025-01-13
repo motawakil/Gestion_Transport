@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<!-- Add Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin_conf.css') }}">
+<div class="admin-page">
+<div class="admin-container">
+
+
+    <!-- Horizontal Menu -->
+    <nav class="admin-nav">
+        <ul>
+            <li class="nav-item active" data-section="vehicules">
+                <i class="fas fa-car"></i>
+                <span>Véhicules</span>
+            </li>
+            <li class="nav-item" data-section="employes">
+                <i class="fas fa-user-tie"></i>
+                <span>Employés</span>
+            </li>
+            <li class="nav-item" data-section="chauffeurs">
+                <i class="fas fa-id-card"></i>
+                <span>Chauffeurs</span>
+            </li>
+           
+        </ul>
+    </nav>
+
+    <!-- Content Sections -->
+    <div class="content-section active" id="vehicules">
+        <!-- Section Header -->
+        <div class="section-header">
+            <h2>Gestion des Véhicules</h2>
+            <div class="section-actions">
+                <button class="add-btn"><i class="fas fa-plus"></i> Ajouter un Véhicule</button>
+                <button class="print-btn"><i class="fas fa-print"></i> Imprimer la Liste</button>
+                <button class="export-btn"><i class="fas fa-file-export"></i> Exporter en Excel</button>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="filter-bar">
+            <input type="text" placeholder="Rechercher un véhicule..." class="search-input">
+            <select class="filter-dropdown">
+                <option value="all">Tous les véhicules</option>
+                <option value="available">Disponibles</option>
+                <option value="maintenance">En maintenance</option>
+            </select>
+        </div>
+
+        <!-- Data Table -->
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Marque</th>
+                        <th>Modèle</th>
+                        <th>Année</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>V001</td>
+                        <td>Renault</td>
+                        <td>Clio</td>
+                        <td>2022</td>
+                        <td><span class="status available">Disponible</span></td>
+                        <td class="actions">
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>V002</td>
+                        <td>Peugeot</td>
+                        <td>208</td>
+                        <td>2021</td>
+                        <td><span class="status maintenance">En maintenance</span></td>
+                        <td class="actions">
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- More static rows -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="content-section" id="employes">
+        <!-- Section Header -->
+        <div class="section-header">
+            <h2>Gestion des Employés</h2>
+            <div class="section-actions">
+                <button class="add-btn"><i class="fas fa-plus"></i> Ajouter un Employé</button>
+                <button class="print-btn"><i class="fas fa-print"></i> Imprimer la Liste</button>
+                <button class="export-btn"><i class="fas fa-file-export"></i> Exporter en PDF</button>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Poste</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>E001</td>
+                        <td>Dubois</td>
+                        <td>Jean</td>
+                        <td>Manager</td>
+                        <td>jean.dubois@example.com</td>
+                        <td>+33 6 12 34 56 78</td>
+                        <td class="actions">
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E002</td>
+                        <td>Martin</td>
+                        <td>Claire</td>
+                        <td>RH</td>
+                        <td>claire.martin@example.com</td>
+                        <td>+33 6 23 45 67 89</td>
+                        <td class="actions">
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <!-- More static rows -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="content-section" id="chauffeurs">
+        <!-- Similar structure for chauffeurs -->
+    </div>
+
+</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin_conf.js') }}"></script>
+{% endblock %}

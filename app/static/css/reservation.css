@@ -4,7 +4,6 @@
     max-width: 1200px;
     margin: 0 auto;
 }
-
 /* Progress Bar */
 .progress-bar {
     display: flex;
@@ -42,9 +41,9 @@
 }
 
 .progress-step.active {
+    background: linear-gradient(to right, #3498db 50%, white 50%);
     border-color: #3498db;
     color: #3498db;
-    background: #fff;
 }
 
 .progress-step.completed {

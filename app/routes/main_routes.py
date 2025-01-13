@@ -46,6 +46,10 @@ def vehicule():
 def account():
     return render_template('account.html')
 
+@main_bp.route('/admin') 
+def admin():
+    return render_template('admin_config.html')   
+
 @main_bp.route('/employes')
 def employes():
     return render_template('employe.html')
